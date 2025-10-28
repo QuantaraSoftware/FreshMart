@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Welcome to Fresh Nexus!</h2>
+<p>Order fresh milk, vegetables, and medicines online.</p>
+
+<h3>Categories</h3>
+<ul>
+    {% for category in categories %}
+    <li>
+        <a href="{% url 'products:product_list' %}?category={{ category.slug }}">{{ category.name }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+<h3>Featured Products</h3>
+<div class="products">
+    {% for product in featured_products %}
+        <div class="product">
+            <a href="{% url 'products:product_detail' product.slug %}">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                <h4>{{ product.name }}</h4>
+                <p>₹{{ product.price }}</p>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
