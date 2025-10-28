@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Order Confirmation</h2>
+<p>Thank you for your order!</p>
+<p>Order ID: {{ order.order_id }}</p>
+<p>Total Amount: ₹{{ order.total }}</p>
+<p>Status: {{ order.status }}</p>
+<a href="{% url 'orders:order_list' %}">View My Orders</a>
+{% endblock %}
